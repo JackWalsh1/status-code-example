@@ -14,5 +14,13 @@
     "eslint": "^8.33.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackWalsh1/status-code-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JackWalsh1/status-code-example/issues"
+  },
+  "homepage": "https://github.com/JackWalsh1/status-code-example#readme"
 }
