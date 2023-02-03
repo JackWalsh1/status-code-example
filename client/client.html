@@ -27,14 +27,23 @@
   </style>
   
   <script>
-    const handleResponse = (response) => {
+    const handleResponse = async (response) => {
+      const defaultHtml = '<p>Status code not implemented</p>';
+      const html = {
+        200: "<b>Success!</b>", 
+        400: "<i>Bad request</i>",
+        404: "<u>Not found</u>"
+      }[response.status] || defaultHtml;
 
+      const responseBody = await response.json();
+
+      document.querySelector("#id").innerHTML = html + `<p></p>` /* response body*/; 
     };
     
     const sendFetch = (url) => {
-
-      //handleResponse(response);
-    };
+      return fetch(url)
+        .then(handleResponse);
+    }
 
     const init = () => {
       const successButton = document.querySelector("#success");

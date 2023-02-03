@@ -15,15 +15,19 @@ const urlStruct = {
 
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
-  
+
+  const parsedQuery = query.parse(parsedUrl.query);
+
+  const status = +parsedQuery.status;
+  const admin = parsedQuery.admin === 'true';
+  const { wealth } = parsedQuery;
 
   const func = urlStruct[parsedUrl.pathname];
   if (func) {
-    func(request, response, params);
+    func(request, response, parsedQuery);
   } else {
-    urlStruct.notFound(request, response, params);
+    urlStruct.notFound(request, response, parsedQuery);
   }
-
 };
 
 http.createServer(onRequest).listen(port, () => {
